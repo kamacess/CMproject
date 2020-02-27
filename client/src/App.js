@@ -16,10 +16,21 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React Franck IO
+
         </a>
       </header>
+      <h1>Communication avec socket.io !</h1>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io.connect('http://localhost:4000');
+      </script>
+
+
     </div>
+
+
   );
 }
 
