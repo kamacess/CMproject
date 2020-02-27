@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app   = require('../app');
 var debug = require('debug')('server:server');
-var http = require('http');
+var http  = require('http');
+// var io    = require('socket.io')(http);
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,19 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+// Chargement de socket.io
+var io = require('socket.io');
+const ioServer = io(server)
+
+
+
+// Quand un client se connecte, on le note dans la console
+ioServer.on('connection',  require("../config/socket"));
+
+// io.socket('message', function(socket){
+//   console.log(socket)
+// })
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -88,3 +102,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+

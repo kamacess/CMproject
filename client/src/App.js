@@ -1,37 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
+import io from "socket.io-client";
 import './App.css';
+const ioClient = io.connect("http://localhost:4000")
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Franck IO
+//   constructor() {
+//     super();
+//     this.state = {
+//       response: false,
+//       endpoint: ""
+//     };
+//   }
 
-        </a>
-      </header>
-      <h1>Communication avec socket.io !</h1>
-
-      <script src="/socket.io/socket.io.js"></script>
-      <script>
-        var socket = io.connect('http://localhost:4000');
-      </script>
+//   componentDidMount() {
+    // const { endpoint } = this.state;
+    // const socket = socketIOClient(endpoint);
+    // socket.on("Fconnection", socket => {
+	// 	console.log("New client connected"));
+//   }
 
 
-    </div>
+
+	// const { response } = this.state;
+
+    // document.getElementById("pr00t").click("message", funMessage => {
+	// 	socket.emit("message", "Cécile va y arriver grâce au pouvoir de l'équipe")
+	// });
+
+	
 
 
-  );
+
+
+
+
+export default function App() {
+	
+	const socket = io("http://127.0.0.1:4000");
+
+	function sendMessage() {		
+		socket.emit("send-message", "salut les potos")
+	}
+
+	socket.on("message", data => {
+		console.log(data)
+	})
+
+	// console.log(document.getElementById("pr00t"));
+	
+	return (
+	<div>
+		<input></input>
+		<button onClick={sendMessage}>pr00t</button>
+	
+		{/* <button onClick={receiveMessage}>pr00t2</button> */}
+
+	
+	</div>
+	)
 }
-
-export default App;
