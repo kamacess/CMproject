@@ -1,49 +1,85 @@
-require("dotenv").config();
-require("./config/mongo")
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var mediaRouter = require('./routes/medias');
-
-var app = express();
+// initial config
+require("dotenv").config(); // import all key/value pairs from .env in process.env : really usefull when going online :)
+require("./config/mongo"); // database connection setup
+// require("./config/passport");
+// dependencies injection
+const express = require("express");
+// const session = require("express-session"); //sessions make data persist between http calls
+// const passport = require("passport"); // auth library (needs sessions)
+const cors = require("cors");
+const _DEVMODE = false;
 
 
+const router = new express.Router();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
-app.use(logger('dev'));
+// ------------------------------------------
+// SERVER CONFIG
+// ------------------------------------------
+const app = express();
+
+// // Allow server to parse body from POST Request
+// app.use(express.urlencoded({ extended: true }));
+
+/**
+ *  HEY YOU ! Happy to see that you read comments.
+ *  the lines below are useful (maybe in your project too :)
+ */
+
+// Allow server to parse JSON from AJAX Request and apply the data to req.body
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// Allow server to extract/parse cookies from http requests headers (check req.cookies)
+// app.use(cookieParser());
 
-app.use('/users', usersRouter);
+/*
+Create a session middleware with the given options.
+Note:  Session data is not saved in the cookie itself, just the session ID. 
+Session data is stored server-side.
+*/
+// app.use(
+//   session({
+//     cookie: { secure: false, maxAge: 4 * 60 * 60 * 1000 }, // 4 hours
+//     resave: true,
+//     saveUninitialized: true,
+//     secret: process.env.SECRET_SESSION
+//   })
+// );
 
-app.use('/media', mediaRouter);
+// this rule allows the client app to exchange via http via the server (AJAX ... Axios)
+const corsOptions = {
+  origin: [process.env.CLIENT_URL],
+  /* credentials : Configures the Access-Control-Allow-Credentials CORS header. Set to true to pass the header, otherwise it is omitted  https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials */
+  credentials: true,
+  optionsSuccessStatus: 200
+};
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// cors middle on
+app.use(cors(corsOptions));
+
+// passport init : these rules MUST set be after session setup (lines above)
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+//------------------------------------------
+// Check Loggedin Users
+// ------------------------------------------
+
+
+//------------------------------------------
+// BASE BACKEND ROUTE
+// ------------------------------------------
+
+app.get("/", (req, res) => {
+  res.send("backend server is running");
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+//------------------------------------------
+// SPLITED ROUTING
+// ------------------------------------------
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+
+const mediasRouter = require("./routes/medias.js");
+app.use('/media', mediasRouter);
 
 module.exports = app;

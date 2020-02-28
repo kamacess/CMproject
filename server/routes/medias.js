@@ -45,21 +45,17 @@ router.get("/medias", async (req, res, next) => {
 });
 
 
-router.get("/medias/:id", (req, res, next) => {
-  mediaModel
-  .findById(req.params.id)
-  .then(dbRes => res.status(200).json(dbRes))
-  .catch(next)
-});
+
 
 router.get("/filtered-medias", (req, res, next) => {
   res.status(200).json({ msg: "@todo" })
 });
 
-router.post("/medias", (req, res, next) => {
+router.post("/medias/", async  (req, res, next) => {
+  console.log("Je n'aime guère les objets vides", req.body);
   const { title, date_of_publication, type, author, resources, preview,
-  media_url, description, duration, wine_association} = req.body;
-  console.log("Je n'aime guère les objets vides", req);
+  media_url, description, duration, wine_association } = req.body;
+  console.log("Je n'aime guère les objets vides", req.body);
   mediaModel
     .create({ title, date_of_publication, type, author, resources, preview, media_url, description, duration, wine_association})
     .then(dbRes => res.status(200).json(dbRes))

@@ -61,53 +61,46 @@ class FormMedia extends Component {
 
   // }
 
-  fileHandler = event => {
-
-    this.setState({ file: event.target.files[0] }, () => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        // when the fileREader ends  ...
-        const baseString = reader.result; // get the image as a base64 encoded string
-        this.setState({ tmpCover: baseString }); // set the tmp avatar as an image source before upload
-      };
-      reader.readAsDataURL(this.state.file); // read the file from the local disk
-    });
-
-
-  }
-
-handleCreateMedia = event => {
-    event.preventDefault()
-
-    var fd = new FormData()
-    fd.append("title", event.target[0].value)
-    fd.append("date_of_publication", event.target[1].value)
-    fd.append("type", event.target[2].value)
-    fd.append("author.first_name",event.target[3].value)
-    fd.append("author.last_name", event.target[4].value)
-    fd.append("author.nationality", event.target[5].value)
-    fd.append("resources", event.target[6].value)
-    fd.append("resources", event.target[7].value)
-    fd.append("resources", event.target[8].value)
-    fd.append("resources", event.target[9].value)
-    fd.append("resources", event.target[10].value)
-    fd.append("resources", event.target[11].value)
-    fd.append("preview", event.target[13].value)
-    fd.append("media_text", event.target[12].value)
-    fd.append("media_url", event.target[14].value)
-    fd.append("media_url", event.target[15].value)
-    fd.append("media_url", event.target[16].value)
-    fd.append("media_url", event.target[17].value)
-    fd.append("media_url", event.target[18].value)
-    fd.append("description", event.target[19].value)
-    fd.append("duration", event.target[20].value)
-    fd.append("wine_association", event.target[21].value)
-    try {
-      apiHandler.post('/media/medias', fd);
-    } catch (apiErr) {
-      console.error(apiErr)
-    }
+  updateState = e => {
+    e.preventDefault()
+    this.setState({ [e.target.name]: e.target.value });
   };
+
+
+  
+
+// handleCreateMedia = event => {
+//     event.preventDefault()
+
+//     var fd = new FormData()
+//     fd.append("title", event.target[0].value)
+//     fd.append("date_of_publication", event.target[1].value)
+//     fd.append("type", event.target[2].value)
+//     fd.append("author.first_name",event.target[3].value)
+//     fd.append("author.last_name", event.target[4].value)
+//     fd.append("author.nationality", event.target[5].value)
+//     fd.append("resources", event.target[6].value)
+//     fd.append("resources", event.target[7].value)
+//     fd.append("resources", event.target[8].value)
+//     fd.append("resources", event.target[9].value)
+//     fd.append("resources", event.target[10].value)
+//     fd.append("resources", event.target[11].value)
+//     fd.append("preview", event.target[13].value)
+//     fd.append("media_text", event.target[12].value)
+//     fd.append("media_url", event.target[14].value)
+//     fd.append("media_url", event.target[15].value)
+//     fd.append("media_url", event.target[16].value)
+//     fd.append("media_url", event.target[17].value)
+//     fd.append("media_url", event.target[18].value)
+//     fd.append("description", event.target[19].value)
+//     fd.append("duration", event.target[20].value)
+//     fd.append("wine_association", event.target[21].value)
+//     try {
+//       apiHandler.post('/media/medias', fd);
+//     } catch (apiErr) {
+//       console.error(apiErr)
+//     }
+//   };
 
   handleDefaultMedia = (index, id, name) =>{
     if (id == this.state.mediaId) {
@@ -130,7 +123,7 @@ handleCreateMedia = event => {
 
   render() {
     return (    
-        <form onSubmit={this.handleCreateMedia} enctype="multipart/form-data">
+        <form onSubmit={this.handleCreateMedia}>
 
           <div>
             <label htmlFor="title">Title</label>
