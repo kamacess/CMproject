@@ -1,41 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faEdit } from "@fortawesome/free-solid-svg-icons";
-// import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 // custom tools
-// import apiHandler from "../api/APIHandler";
-// import { getTableRowsTemplate } from "./../components/admin/AdminTableRows";
-// import Head from "./../components/admin/AdminTableHead";
-// import IconPlusAdmin from "./../components/icon/IconPlusAdmin";
+import apiHandler from "../api/apiHandler";
+import { getTableRowsTemplate } from "./../components/admin/AdminTableRows";
+import Head from "./../components/admin/AdminTableHead";
+import IconPlusAdmin from "./../components/icon/IconPlusAdmin";
 // styles
-import "./../styles/table.css";
-import "./../styles/icon-color.css";
+// import "./../styles/table.css";
+// import "./../styles/icon-color.css";
 // IMPORTANT NOTE :
 // The AdminTables component below uses genericity
 // for your project : Be aware that it's really easier to create separate tables components for your different collection
 // ...
 
 const headColumns = {
-//     
-// TODO title: String ,
-//     date_of_publication: Date,
-//     type: enums [video, text, image, audio, music, pdf],
-//     author: [{first_name: String,
-//             last_name: String,
-//             nationality: String}],
-//     resources: [String],
-//     preview: String,
-//     media_url: [String],
-//     description: String,
-//     duration: Number,
-//     wine_association: [String],
 
+  media: ["title", "date_of_publication", "type", "author", "resources", "preview", "media_url", "description", "duration", "wine_association"]
 
-//   media: ["title", "date_of_publication", "type"],
-  albums: ["name", "release", "rates", "label"],
-  labels: ["name", "country", "city"],
-  styles: ["name", "color"]
 };
 
 let RowTds;

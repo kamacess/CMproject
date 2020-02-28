@@ -9,9 +9,10 @@ const mediaSchema = new Schema ({
             nationality: String}],
     resources: [String],
     preview: String,
+    media_text: String,
     media_url: [String],
     description: String,
-    duration: ,
+    duration: Number,
     wine_association: [String]
 })
 
