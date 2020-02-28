@@ -29,15 +29,12 @@ export default function App() {
 		<React.Fragment>
 			<HeaderMain />
 			<main id="content_main">
-				<Router>
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/medias" component={AdminTables} />
-						<Route path= '/admin/medias/:mode' component={AdminForms}/>
+						<Route path="/medias" component={Medias} />
+						<Route path= '/admin/:endpoint(medias|medias)/:mode' component={AdminForms}/>
 						<Route path="*" component={NotFound} />
 					</Switch>
-				</Router>
-
 				<input />
 				<button onClick={sendMessage}>pr00t</button>
 			</main>

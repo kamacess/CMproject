@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 const mediaSchema = new Schema ({
     title: String ,
     date_of_publication: Date,
-    type: enums [video, text, image, audio, music, pdf],
+    type: {
+        type: String,
+        enum: ["video", "text", "image", "audio", "music", "pdf"]},
     author: [{first_name: String,
             last_name: String,
             nationality: String}],

@@ -6,10 +6,11 @@ import { withRouter } from "react-router-dom";
 // styles
 // import "./../../styles/form.css";
 // import "./../../styles/icon-avatar.css";
-import api from "../../api/apiHandler"
+
+import apiHandler from "../../api/apiHandler";
 
 
-class FormAlbum extends Component {
+class FormMedia extends Component {
 
   state = {
     title: '',
@@ -21,56 +22,56 @@ class FormAlbum extends Component {
     media_url: [],
     description: '',
     duration: '',
-    wine_association: []
+    wine_association: ''
 
   };
 
-  componentDidMount() {
+  // componentDidMount() {
 
-//     api.get("/medias")
-//     .then(dbMedias => {
-//       api.get("/labels")
-//       .then(dbLabels => {        
-//         if (this.props.match.params.id) {
-//           api.get("/albums/"+this.props.match.params.id)
-//           .then(dbAlbum => {
-//             this.setState({
-//               tmpCover: dbAlbum.data.album[0].cover,
-//               imageOriginal: dbAlbum.data.album[0].cover,
-//               labelId: dbAlbum.data.album[0].label,
-//               artistId: dbAlbum.data.album[0].artist,
-//               labels: dbLabels.data.labels,
-//               artists: dbArtists.data.artists,
-//               title: dbAlbum.data.album[0].title,
-//               description: dbAlbum.data.album[0].description,
-//               releaseDate: dbAlbum.data.album[0].releaseDate.substr(0,10),
-//               //styleId: artist.data.artist[0].style
-//             })
-//           })
-//         .catch(err => console.log(err))
-//         }
-//         else {
-//           this.setState({labels: dbLabels.data.labels, artists: dbArtists.data.artists})
-//         }
+  //   api.get("/medias")
+  //   .then(dbMedias => {
+  //     api.get("/labels")
+  //     .then(dbLabels => {        
+  //       if (this.props.match.params.id) {
+  //         api.get("/albums/"+this.props.match.params.id)
+  //         .then(dbAlbum => {
+  //           this.setState({
+  //             tmpCover: dbAlbum.data.album[0].cover,
+  //             imageOriginal: dbAlbum.data.album[0].cover,
+  //             labelId: dbAlbum.data.album[0].label,
+  //             mediaId: dbAlbum.data.album[0].media,
+  //             labels: dbLabels.data.labels,
+  //             medias: dbmedias.data.medias,
+  //             title: dbAlbum.data.album[0].title,
+  //             description: dbAlbum.data.album[0].description,
+  //             releaseDate: dbAlbum.data.album[0].releaseDate.substr(0,10),
+  //             //styleId: media.data.media[0].style
+  //           })
+  //         })
+  //       .catch(err => console.log(err))
+  //       }
+  //       else {
+  //         this.setState({labels: dbLabels.data.labels, medias: dbmedias.data.medias})
+  //       }
         
-//       })
-//       .catch(err => console.log(err))
-//     })
-//     .catch(err => console.log(err))
+  //     })
+  //     .catch(err => console.log(err))
+  //   })
+  //   .catch(err => console.log(err))
 
-//   }
+  // }
 
-//   fileHandler = event => {
+  fileHandler = event => {
 
-//     this.setState({ file: event.target.files[0] }, () => {
-//       const reader = new FileReader();
-//       reader.onloadend = () => {
-//         // when the fileREader ends  ...
-//         const baseString = reader.result; // get the image as a base64 encoded string
-//         this.setState({ tmpCover: baseString }); // set the tmp avatar as an image source before upload
-//       };
-//       reader.readAsDataURL(this.state.file); // read the file from the local disk
-//     });
+    this.setState({ file: event.target.files[0] }, () => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // when the fileREader ends  ...
+        const baseString = reader.result; // get the image as a base64 encoded string
+        this.setState({ tmpCover: baseString }); // set the tmp avatar as an image source before upload
+      };
+      reader.readAsDataURL(this.state.file); // read the file from the local disk
+    });
 
 
   }
@@ -79,29 +80,33 @@ handleCreateMedia = event => {
     event.preventDefault()
 
     var fd = new FormData()
-    fd.append("title",event.target[0].value)
-    fd.append("date_of_publication",event.target[1].value)
-    fd.append("type",event.target[3].value)
-    fd.append("author.first_name",event.target[4].value)
-    fd.append("author.last_name",event.target[5].value)
-    fd.append("author.nationality",event.target[6].value)
-    fd.append("resources",event.target[7].value)
-    fd.append("resources",event.target[8].value)
-    fd.append("resources",event.target[9].value)
-    fd.append("resources",event.target[10].value)
-    fd.append("resources",event.target[11].value)
-    fd.append("resources",event.target[12].value)
-    fd.append("preview",event.target[13].value)
-    fd.append("media_text",event.target[14].value)
-    fd.append("media_url",event.target[15].value)
-    fd.append("media_url",event.target[16].value)
-    fd.append("media_url",event.target[17].value)
-    fd.append("media_url",event.target[18].value)
-    fd.append("media_url",event.target[19].value)
-    fd.append("description",event.target[20].value)
-    fd.append("duration",event.target[21].value)
-    fd.append("wine_association",event.target[22].value)
-
+    fd.append("title", event.target[0].value)
+    fd.append("date_of_publication", event.target[1].value)
+    fd.append("type", event.target[2].value)
+    fd.append("author.first_name",event.target[3].value)
+    fd.append("author.last_name", event.target[4].value)
+    fd.append("author.nationality", event.target[5].value)
+    fd.append("resources", event.target[6].value)
+    fd.append("resources", event.target[7].value)
+    fd.append("resources", event.target[8].value)
+    fd.append("resources", event.target[9].value)
+    fd.append("resources", event.target[10].value)
+    fd.append("resources", event.target[11].value)
+    fd.append("preview", event.target[13].value)
+    fd.append("media_text", event.target[12].value)
+    fd.append("media_url", event.target[14].value)
+    fd.append("media_url", event.target[15].value)
+    fd.append("media_url", event.target[16].value)
+    fd.append("media_url", event.target[17].value)
+    fd.append("media_url", event.target[18].value)
+    fd.append("description", event.target[19].value)
+    fd.append("duration", event.target[20].value)
+    fd.append("wine_association", event.target[21].value)
+    try {
+      apiHandler.post('/media/medias', fd);
+    } catch (apiErr) {
+      console.error(apiErr)
+    }
   };
 
   handleDefaultMedia = (index, id, name) =>{
@@ -169,10 +174,11 @@ handleCreateMedia = event => {
           <div>
             <label htmlFor="first_name">Author</label>
 
-            <input  name="first_name" type="text" placeholder="First Name" defaultValue={this.author.first_name}>
+            <input  name="first_name" type="text" placeholder="First Name" >
             </input>
-            <input name="last_name" type="text" placeholder="Last name" defaultValue={this.state.author.last_name}></input>
-            <input name="nationality" type="text" placeholder="nationality" defaultValue={this.state.author.nationality}></input>
+          
+            <input name="last_name" type="text" placeholder="Last name" ></input> 
+            <input name="nationality" type="text" placeholder="nationality" ></input> 
           </div>
 
           <div>
@@ -182,11 +188,12 @@ handleCreateMedia = event => {
             <input name="resources" type="text"></input>
             <input name="resources" type="text"></input>
             <input name="resources" type="text"></input>
+            <input name="resources" type="text"></input>
           </div>
 
           <div>
             <label htmlFor="preview">Preview</label>
-            <img src={this.state.preview} id="preview" type="file"/>
+            <input  id="preview" type="text"></input>> 
           </div>
 
          <div>
@@ -196,26 +203,26 @@ handleCreateMedia = event => {
 
          <div>
          <label htmlFor="media_url">text of the media</label>
-         <input name='media_url' type="text"/>
-         <input name='media_url' type="text"/>
-         <input name='media_url' type="text"/>
-         <input name='media_url' type="text"/>
-         <input name='media_url' type="text"/>
+         <input name='media_url' type="text"></input>
+         <input name='media_url' type="text"></input>
+         <input name='media_url' type="text"></input>
+         <input name='media_url' type="text"></input>
+         <input name='media_url' type="text"></input>
          </div>
 
          <div>
-         <label htmlFor="descripotion">description</label>
-         <textarea name="descripotion" id="descripotion" cols="30" rows="10"></textarea>
+         <label htmlFor="description">description</label>
+         <textarea name="description" id="description" cols="30" rows="10"></textarea>
          </div>
 
           <div>
             <label>duration</label>
-            <input type="number"/>
+            <input type="number"></input>
           </div>
 
           <div>
             <label>Wine pairing</label>
-            <input type="text"/>
+            <input type="text" ></input>
           </div>
 
       
@@ -229,4 +236,4 @@ handleCreateMedia = event => {
     )
     }
   }
-export default withRouter(FormAlbum);
+export default withRouter(FormMedia);
