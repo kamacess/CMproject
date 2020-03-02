@@ -93,7 +93,8 @@ export default class AdminTables extends Component {
               {resources.map((r, i) => (
                 <tr key={i}>
                   <RowTds key={i} data={r} />
-                  {/* TODO CODE ONE MODULE FOR ACTION TDS */}
+
+
                   <th
                     data-ressource-id={r._id}
                     className="is-clickable"

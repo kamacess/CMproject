@@ -13,7 +13,7 @@ export const RowMedia = ({ data }) => {
 				</Link>
 			</td>
 			<td>title</td>
-			{/* <td><FormatDate date= date_of_publication /></td> */}
+			<td><FormatDate date= date_of_publication /></td> */}
 			<td>type</td>
 			<td>author</td>
 			<td>resources</td>
