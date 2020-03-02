@@ -4,6 +4,4 @@ module.exports = function(socket){
       socket.broadcast.emit('message', message)
     //   socket.emit('message', message)
     });
-
-
 }

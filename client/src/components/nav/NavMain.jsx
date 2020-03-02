@@ -9,8 +9,12 @@ export default function NavMain() {
 				<NavLink exact className="link" activeClassName="is-active" to="/">
 					home
 				</NavLink>
+
 				<NavLink className="link" activeClassName="is-active" to="/admin/medias/create">
 					medias
+				</NavLink>
+				<NavLink className="link" activeClassName="is-active" to="/adminall/medias/">
+					all
 				</NavLink>
 			
 		</nav>
