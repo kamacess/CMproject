@@ -1,11 +1,10 @@
 import React from 'react';
 import ListActionBack from './../components/frontLargeScreen/ListActionBack';
 import io from 'socket.io-client';
-const ioClient = io.connect('http://localhost:4000');
 // import { Link } from 'react-router-dom';
-
 import './../styles/style.css';
 
+const ioClient = io.connect('http://localhost:4000');
 export default function Home() {
 
 	const socket = io('http://127.0.0.1:4000');
