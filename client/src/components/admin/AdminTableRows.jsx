@@ -1,29 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // custom tools
-// import FormatDate from './../FormatDate';
+import FormatDate from './../FormatDate';
 
 export const RowMedia = ({ data }) => {
 	const avg = data.avg ? data.avg.toFixed(2) : null;
 	return (
 		<React.Fragment>
+
+			<td>{data.title}</td>
+			<td><FormatDate date= {data.date_of_publication} /></td>
+			<td>{data.type}</td>
+			<td>{data.author_first_name}</td>
+			<td>{data.author_last_name}</td>
+			<td>{data.resource}</td>
+			<td>{data.preview}</td>
+			<td>{data.media_text}</td>
+			<td>{data.media_url}</td>
+			<td>{data.description}</td>
+			<td>{data.duration}</td>
+			<td>{data.wine_association}</td>
 			<td>
 				<Link className="link" to={`/medias/${data._id}`}>
-					{data.name}
+					{data._id}
 				</Link>
 			</td>
-			<td>title</td>
-			{/* <td><FormatDate date= date_of_publication /></td> */}
-			<td>type</td>
-			<td>author</td>
-			<td>resources</td>
-			<td>preview</td>
-			<td>media_url</td>
-			<td>description</td>
-			<td>duration</td>
-			<td>wine_association</td>
-			<td>{data.style ? data.style.name : 'no style yet'}</td>
-			<td>{avg || 'unrated'}</td>
 		</React.Fragment>
         
 	);

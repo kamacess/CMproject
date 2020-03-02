@@ -27,10 +27,9 @@ export default function App() {
 						<Route exact path="/tel" component={HomeTel} />
 						<Route path="/medias" component={Medias} />
 						<Route path= '/admin/:endpoint(medias|medias)/:mode' component={AdminForms}/>
-						<Route path= '/adminall/:endpoint(medias|medias)/:mode' component={AdminTables}/>
+						<Route path= '/adminall/:endpoint(medias|medias)/' component={AdminTables}/>
 						<Route path="*" component={NotFound} />
 					</Switch>
-				<input />
 				
 			</main>
 		</React.Fragment>

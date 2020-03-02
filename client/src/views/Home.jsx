@@ -18,7 +18,7 @@ export default function Home() {
             <h1>Le nom du biniou</h1>
             <img src="./../../assets/yellow-cat.png" alt="the yellow cat smiles at you"/>
             <ListActionBack socket={socket}/>
-            <button onClick={sendMessage}>pr00t</button>
+            <button onClick={sendMessage}>pr00t2THE M4XXXX</button>
         </div>
     )
 }
