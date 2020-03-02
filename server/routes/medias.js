@@ -51,25 +51,65 @@ router.get("/filtered-medias", (req, res, next) => {
   res.status(200).json({ msg: "@todo" })
 });
 
-router.post("/medias/", async  (req, res, next) => {
-  console.log("Je n'aime guère les objets vides", req.body);
-  const { title, date_of_publication, type, author, resources, preview,
-  media_url, description, duration, wine_association } = req.body;
-  console.log("Je n'aime guère les objets vides", req.body);
+router.post("/medias", async  (req, res, next) => {
+
+  const { title,
+    date_of_publication,
+    type,
+    author_first_name,
+    author_last_name,
+    resource,
+    preview,
+    media_text,
+    media_url,
+    description,
+    duration,
+    wine_association } = req.body;
   mediaModel
-    .create({ title, date_of_publication, type, author, resources, preview, media_url, description, duration, wine_association})
+    .create({ title,
+			date_of_publication,
+			type,
+			author_first_name,
+			author_last_name,
+			resource,
+			preview,
+			media_text,
+			media_url,
+			description,
+			duration,
+			wine_association})
     .then(dbRes => res.status(200).json(dbRes))
     .catch(next)
 
 });
 
 router.patch("/medias/:id", async (req, res, next) => {
-  const { title, date_of_publication, type, author, resources, preview,
-    media_url, description, duration, wine_association} = req.body;
+  const { title,
+    date_of_publication,
+    type,
+    author_first_name,
+    author_last_name,
+    resource,
+    preview,
+    media_text,
+    media_url,
+    description,
+    duration,
+    wine_association} = req.body;
 
   mediaModel
-    .findByIdAndUpdate(req.params.id, { title, date_of_publication, type, author, resources, preview,
-        media_url, description, duration, wine_association})
+    .findByIdAndUpdate(req.params.id, { title,
+			date_of_publication,
+			type,
+			author_first_name,
+			author_last_name,
+			resource,
+			preview,
+			media_text,
+			media_url,
+			description,
+			duration,
+			wine_association})
     .then(dbRes => res.status(200).json(dbRes))
     .catch(next);
 });
