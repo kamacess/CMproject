@@ -2,7 +2,7 @@ const adjectives = [ "academic", "accomplished", "acidic", "agitated", "ajar", "
 
 const animals = ["alligator", "antelope", "armadillo", "baboon", "beaver", "bee", "bison", "camel", "capybara", "cat", "caterpillar", "cobra", "cockroach", "coyote", "cougar", "crab", "dinosaur", "dolphin", "dragonfly", "dragon", "eel", "emu", "elk", "falcon", "ferret", "gazelle", "goat", "gorilla", "hamster", "hawk", "hippopotamus", "hornet", "horse", "hummingbird", "hyena", "jaguar", "iguana", "jellyfish", "koala", "kiwi", "lemur", "macaque", "mongoose", "mosquito", "narwhal", "okapi", "ostrich", "otter", "pig", "pigeon", "pony", "unicorn", "porcupine", "pug", "rabbit", "rhinoceros", "seahorse", "sardine", "squirrel", "starfish", "shark", "stegosaurus", "swan", "viper", "whale", "weasel", "wolf", "wolverine", "yak", "zebra"] ;
 
-const pattern = ["fas fa-hippo", "fas fa-splotch", "fas fa-hat-wizard", "fas fa-hashtag"]
+const pattern = ["cookie", "chess-board", "stroopwafel","carrot", "bug", "heartbeat", "spider", "hippo", "horse", "horse-head", "fire", "kiwi-bird", "plus", "socks", "spinner", "splotch", "star", "hotdog", "align-justify", "angle-double-down", "angle-double-left", "angle-double-right", "angle-double-up", "rocket", "meteor", "robot", "atom", "bahai", "hand-spock", "spider", "paw", "allergies", "otter", "feather", "dragon", "dove", "crow", "cat", "poo", "user-ninja", "leaf", "tree", "exclamation" ]
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));

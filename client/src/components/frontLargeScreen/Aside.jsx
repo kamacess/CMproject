@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import AsideLine from './AsideLine'
 
 export default function Aside() {
     return (
@@ -6,13 +7,10 @@ export default function Aside() {
             <h2>was passiert???</h2>
     
     <ul>
-        <li>emotional alligator has voted </li>
-        <li>medium crab has voted</li>
-        <li>necessary zebra has prouted</li>
-        <li>ambitious mongoose has voted</li>
-        <li>busy hamster has voted</li>
-        <li>bewitched pig has prouted</li>
-        <li>supportive bee has voted</li>
+        <AsideLine />
+        <AsideLine />
+        <AsideLine />
+        <AsideLine />
     </ul>
         </aside>
     )
