@@ -8,11 +8,21 @@ export default function BoutonVote(props) {
             console.log("j'ai compris qu'il fallait handleVote")
     }
 
+    function handleSimulerVote(){
+        props.socket.emit('send-votes', Date());
+        console.log("send-votes")
+    }
+
     return (
         <div>
             <button className="vote" onClick= {handleVote}>
                 VOTER pour CE vote
             </button>
+            <button className="vote" onClick= {handleSimulerVote}>
+                simuler les 4 votes
+            </button>
+
         </div>
+
     )
 }
