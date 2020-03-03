@@ -1,9 +1,10 @@
 import React from 'react';
 import ListActionBack from './../components/frontLargeScreen/ListActionBack';
 import io from 'socket.io-client';
-const ioClient = io.connect('http://localhost:4000');
 // import { Link } from 'react-router-dom';
+import './../styles/style.css';
 
+const ioClient = io.connect('http://localhost:4000');
 export default function Home() {
 
 	const socket = io('http://127.0.0.1:4000');
@@ -15,10 +16,27 @@ export default function Home() {
 
     return (
         <div className="home">
-            <h1>Le nom du biniou</h1>
-            <img src="./../../assets/yellow-cat.png" alt="the yellow cat smiles at you"/>
-            <ListActionBack socket={socket}/>
-            <button onClick={sendMessage}>pr00t</button>
+            <main>
+        TON COMPOSANT REACT MAIN
+
+        <ListActionBack socket={socket}/>
+            <button onClick={sendMessage}>pr00t2THE M4XXXX</button>
+    </main>
+
+    <aside>
+        <h2>was passiert???</h2>
+    
+        <ul>
+            <li> emotional alligator has voted </li>
+            <li>medium crab has voted</li>
+            <li>necessary zebra has prouted</li>
+            <li>ambitious mongoose has voted</li>
+            <li>busy hamster has voted</li>
+            <li>bewitched pig has prouted</li>
+            <li>supportive bee has voted</li>
+        </ul>
+    </aside>
+            
         </div>
     )
 }

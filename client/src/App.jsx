@@ -20,19 +20,15 @@ export default function App() {
 
 	return (
 		<React.Fragment>
-			<HeaderMain />
-			<main id="content_main">
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/tel" component={HomeTel} />
-						<Route path="/medias" component={Medias} />
-						<Route path= '/admin/:endpoint(medias|medias)/:mode' component={AdminForms}/>
-						<Route path= '/adminall/:endpoint(medias|medias)/:mode' component={AdminTables}/>
-						<Route path="*" component={NotFound} />
-					</Switch>
-				<input />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/tel" component={HomeTel} />
+				<Route path="/medias" component={Medias} />
+				<Route path= '/admin/:endpoint(medias|medias)/:mode' component={AdminForms}/>
+				<Route path= '/adminall/:endpoint(medias|medias)/' component={AdminTables}/>
+				<Route path="*" component={NotFound} />
+			</Switch>
 				
-			</main>
 		</React.Fragment>
 	);
 }

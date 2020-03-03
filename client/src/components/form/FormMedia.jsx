@@ -110,13 +110,13 @@ export default withRouter(function FormMedia({ mode = 'create', _id, history, ma
 	return (
     
 		<form className="form" onSubmit={handleSubmit} onChange={handleChange}>
-			<div className= "line-input"><label htmlFor="title">Title</label>
+			<label className = "label" htmlFor="title">Title</label>
 			
-			<input className="input" id='title' type="text" placeholder="Media name" defaultValue={title} /></div>
+			<input className="input" id='title' type="text" placeholder="Media name" defaultValue={title} />
 			
-			<label htmlFor="date_of_publication">Date of publication</label>
-			<input name="date_of_publication" id="date_of_publication" type="date" defaultValue={date_of_publication} />
-			<select name="type" className="label" id="type">
+			<label className = "label" htmlFor="date_of_publication">Date of publication</label>
+			<input className="input" name="date_of_publication" id="date_of_publication" type="date" defaultValue={date_of_publication} />
+			<select name="type" className="label" className="input" id="type">
 				<option value="" disabled>
 					Select a type
 				</option>
@@ -128,25 +128,25 @@ export default withRouter(function FormMedia({ mode = 'create', _id, history, ma
 				<option value="text">text</option>
 				<option value="pdf">pdf</option>
 			</select>
-			<label htmlFor="author_first_name">Author first name</label>
-			<input id="author_first_name" type="text" placeholder="author first name" />
-			<label htmlFor="author_last_name">Author last name</label>
-			<input id="author_last_name" type="text" placeholder="author last name" />
+			<label className = "label" htmlFor="author_first_name">Author first name</label>
+			<input className="input" id="author_first_name" type="text" placeholder="author first name" defaultValue={author_first_name} />
+			<label className = "label" htmlFor="author_last_name">Author last name</label>
+			<input className="input" id="author_last_name" type="text" placeholder="author last name" defaultValue={author_last_name} />
 			
-			<label htmlFor="resource">resource</label>
-			<input id="resource" name="resource" type="text" />
-			<label htmlFor="preview">Preview</label>
-			<input id="preview" type="text" />>
-			<label htmlFor="media_text">text of the media</label>
-			<textarea name="media_text" id="media_text" cols="30" rows="10" />
-			<label htmlFor="media_url">url of the media</label>
-			<input name="media_url" id = 'media_url' type="text" />
+			<label className = "label" htmlFor="resource">resource</label>
+			<input className="input" id="resource" name="resource" type="text" defaultValue={resource} />
+			<label className = "label" htmlFor="preview">Preview</label>
+			<input className="input" id="preview" type="text" defaultValue={preview}/>
+			<label className = "label" htmlFor="media_text">text of the media</label>
+			<textarea className="input" name="media_text" id="media_text" cols="30" rows="10" defaultValue={media_text} />
+			<label className = "label" htmlFor="media_url">url of the media</label>
+			<input className="input" name="media_url" id = 'media_url' type="text" defaultValue={media_url} />
 			<label htmlFor="description">description</label>
-			<textarea name="description" id="description" cols="30" rows="10" />
+			<textarea className="input" name="description" id="description" cols="30" rows="10" defaultValue={description} />
 			<label className = "label">duration</label>
-			<input id="duration" name="duration" type="number" />
+			<input className="input" id="duration" name="duration" type="number" defaultValue={duration} />
 			<label>Wine pairing</label>
-			<input className = "label" id="wine_association" type="text" />
+			<input className="input" className = "label" id="wine_association" type="text" defaultValue={wine_association} />
 			<button type="submit">OK</button>
 		</form>
 	);

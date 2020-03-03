@@ -9,7 +9,8 @@ import { getTableRowsTemplate } from "./../components/admin/AdminTableRows";
 import Head from "./../components/admin/AdminTableHead";
 import IconPlusAdmin from "./../components/icon/IconPlusAdmin";
 // styles
-// import "./../styles/table.css";
+import "./../styles/table.css";
+import HeaderMain from "../components/HeaderMain";
 // import "./../styles/icon-color.css";
 // IMPORTANT NOTE :
 // The AdminTables component below uses genericity
@@ -18,7 +19,18 @@ import IconPlusAdmin from "./../components/icon/IconPlusAdmin";
 
 const headColumns = {
 
-  media: ["title", "date_of_publication", "type", "author", "resources", "preview", "media_url", "description", "duration", "wine_association"]
+  medias: ["title",
+    "date_of_publication",
+    "type",
+    "author_first_name",
+    "author_last_name",
+    "resource",
+    "preview",
+    "media_text",
+    "media_url",
+    "description",
+    "duration",
+    "wine_association"]
 
 };
 
@@ -32,8 +44,13 @@ export default class AdminTables extends Component {
   };
 
   updateState = async () => {
+
+    
     try {
-      const res = await apiHandler.get(`/${_endpoint}`);
+      const res = await apiHandler.get(`/media/${_endpoint}`);
+      
+      console.log(res);
+      
       RowTds = getTableRowsTemplate(_endpoint);
 
       this.setState({
@@ -59,6 +76,8 @@ export default class AdminTables extends Component {
     this.updateState();
   }
 
+
+  
   handleDeleteRow = async e => {
     try {
       await apiHandler.delete(
@@ -73,9 +92,11 @@ export default class AdminTables extends Component {
 
   render() {
     const { headColumns, resources } = this.state;
-
+    console.log("this state: ", this.state)
     return (
       <React.Fragment>
+        <HeaderMain />
+
         <h1 className="title">
           <span>Admin {_endpoint}</span>
           <IconPlusAdmin endpoint={_endpoint} />
