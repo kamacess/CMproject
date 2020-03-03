@@ -1,6 +1,9 @@
 //import mediaModel from '../models/Media';
 const mediaModel = require('../models/Media');
+
 let connectedUsers = [];
+let connectedUsers2 = [];
+
 
 module.exports = function(socket){
 
@@ -16,23 +19,29 @@ module.exports = function(socket){
 
     socket.on( "register", function(username)
         {
+            console.log("tv connected")
             socket.username = username;
             connectedUsers[username] = socket;
             console.log(connectedUsers);
         }
     )
 
-
-
-
-    console.log(connectedUsers);
+    socket.on( "registerTel", function(username)
+        {
+            console.log("tv connected")
+            socket.username = username;
+            connectedUsers[username] = socket;
+            console.log(connectedUsers);
+            socket.emit('privateRegister', "titi"+username);
+        }
+    )
 
     socket.on('send-media', function(media){
         console.log("rrrrrrr",connectedUsers);
         //let XrandomMedia = getMediaFromBaseMedia();
         let randomMedia = "http://www.atomisation.net/ut/images/paris26/your_hair_wants_cutting_2019.jpg";
         console.log("random media", randomMedia);
-        connectedUsers["iamfront"].emit('private', randomMedia);
+        socket.emit('private', randomMedia);
     });
 
     function getMediaFromBaseMedia() {
