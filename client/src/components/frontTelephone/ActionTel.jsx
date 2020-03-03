@@ -8,7 +8,7 @@ export default function ActionTel(props) {
   return (
     <div className="list-action">
       mon web socket tel
-      <BoutonVote socket = {props.socket}/>
+      <BoutonVote socket = {props.socket} />
       
       </div>
   );

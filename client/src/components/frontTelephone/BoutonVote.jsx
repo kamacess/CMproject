@@ -11,7 +11,7 @@ export default function BoutonVote(props) {
     return (
         <div>
             <button className="vote" onClick= {handleVote}>
-                VOTER pour CE media                
+                VOTER pour CE vote
             </button>
         </div>
     )

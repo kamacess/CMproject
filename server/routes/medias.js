@@ -121,4 +121,5 @@ router.delete("/medias/:id", (req, res, next) => {
   .catch(next)
 });
 
+
 module.exports = router;
