@@ -8,6 +8,10 @@ export default function BoutonVoteMedia(props) {
         console.log("j'ai compris qu'il fallait handleVote Media")
     }
 
+    props.socket.on('registerTel',  function(mediaRecu){
+        console.log("registertel",mediaRecu);
+    });
+
     return (
         <div>
             <button className="vote" onClick= {handleVoteMedia}>

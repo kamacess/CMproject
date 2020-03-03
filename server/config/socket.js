@@ -22,6 +22,9 @@ module.exports = function(socket){
         }
     )
 
+
+
+
     console.log(connectedUsers);
 
     socket.on('send-media', function(media){
@@ -46,8 +49,13 @@ module.exports = function(socket){
     }
 
     socket.on('send-votes', function(votes){
-        let votelists = [33, 55, 12, 56, 0];
-        connectedUsers["iamfront"].emit('votes', votelists);
+        let voteslist = [];
+        voteslist[0] = [33, 55, 16, 56, 48];
+        voteslist[1] = [43, 55, 17, 46, 68];
+        voteslist[2] = [63, 25, 72, 36, 79];
+        voteslist[3] = [83, 15, 82, 26, 13];
+        voteslist[4] = [93, 95, 92, 16, 22];
+        connectedUsers["iamfront"].emit('votes', votelist);
     });
 
 
