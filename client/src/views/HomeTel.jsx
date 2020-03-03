@@ -1,7 +1,7 @@
 import React from 'react';
-import ActionTel from './../components/frontTelephone/ActionTel';
+import EcranActionTel from '../components/frontTelephone/EcranActionTel';
 import io from 'socket.io-client';
-import BoutonVoteMedia from "../components/frontTelephone/BoutonVoteMedia";
+import EcranRange from "../components/frontTelephone/EcranRange";
 const ioClient = io.connect('http://localhost:4000');
 const uuidv4 = require("uuid/v4");
 
@@ -9,7 +9,7 @@ const uuidv4 = require("uuid/v4");
 
 export default function HomeTel() {
 
-    //generer un id unique
+    //générer un id unique
     const idUnique = getUniqueId();
 
     function  getUniqueId() {
@@ -23,10 +23,9 @@ export default function HomeTel() {
 
     return (
         <div className="home-tel">
-            <h1>Sur le tel</h1>
-            <input type="hidden" value={idUnique} name="uniqueIdCM" />
-            <ActionTel socket = {socket} />
-            <BoutonVoteMedia socket = {socket} />
+            <h1>BonGEOurrE</h1>
+            <EcranActionTel socket = {socket} />
+            <EcranRange socket = {socket} />
         </div>
     )
 }

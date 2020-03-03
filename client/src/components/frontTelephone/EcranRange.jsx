@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 
-export default function BoutonVoteMedia(props) {
+
+export default function EcranRange(props) {
 
     let localCle = "cle";
 
