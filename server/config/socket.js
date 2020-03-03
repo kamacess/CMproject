@@ -45,4 +45,10 @@ module.exports = function(socket){
         return resultFormDb;
     }
 
+    socket.on('send-votes', function(votes){
+        let votelists = [33, 55, 12, 56, 0];
+        connectedUsers["iamfront"].emit('votes', votelists);
+    });
+
+
 }
