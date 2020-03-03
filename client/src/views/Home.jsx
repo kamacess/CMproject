@@ -1,6 +1,7 @@
 import React from 'react';
 import ListActionBack from './../components/frontLargeScreen/ListActionBack';
 import io from 'socket.io-client';
+import Aside from './../components/frontLargeScreen/Aside'
 // import { Link } from 'react-router-dom';
 import './../styles/style.css';
 
@@ -23,19 +24,7 @@ export default function Home() {
             <button onClick={sendMessage}>pr00t2THE M4XXXX</button>
     </main>
 
-    <aside>
-        <h2>was passiert???</h2>
-    
-        <ul>
-            <li> emotional alligator has voted </li>
-            <li>medium crab has voted</li>
-            <li>necessary zebra has prouted</li>
-            <li>ambitious mongoose has voted</li>
-            <li>busy hamster has voted</li>
-            <li>bewitched pig has prouted</li>
-            <li>supportive bee has voted</li>
-        </ul>
-    </aside>
+    <Aside />
             
         </div>
     )
