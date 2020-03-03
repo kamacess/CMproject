@@ -10,4 +10,5 @@ h3,
 td,
 label, .list-action {
   color: whitesmoke;
+  padding: 1rem;
 }

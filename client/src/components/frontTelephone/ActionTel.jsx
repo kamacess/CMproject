@@ -1,5 +1,6 @@
 import React from "react";
 import BoutonVote from './BoutonVote';
+import './../../styles/device.css'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";

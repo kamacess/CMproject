@@ -6,11 +6,11 @@ const ioClient = io.connect('http://localhost:4000');
 
 // import { Link } from 'react-router-dom';
 
-export default function Home() {
+export default function HomeTel() {
     const socket = io('http://127.0.0.1:4000');
 
     return (
-        <div className="home">
+        <div className="home-tel">
             <h1>Sur le tel</h1>
             <ActionTel socket = {socket} />
             <BoutonVoteMedia socket = {socket} />
