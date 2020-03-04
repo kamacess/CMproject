@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 import './../styles/style.css';
 import DisplayPhoto from "../components/frontLargeScreen/DisplayPhoto";
 import DisplayGraph from './../components/frontLargeScreen/DisplayGraph';
+import DisplayVideo from './../components/frontLargeScreen/DisplayVideo';
 import Aside from './../components/frontLargeScreen/Aside';
 import DisplayMedia from './../components/frontLargeScreen/DisplayMedia';
 
@@ -16,6 +17,7 @@ export default function Home() {
     const [displayPhoto, setDisplayPhoto] = useState(false);
     const [displayGraph, setDisplayGraph] = useState(false);
     const [displayMedia, setDisplayMedia] = useState(false);
+    const [displayVideo, setDisplayVideo] = useState(false);
     const [socket, setSocket] = useState( io('http://127.0.0.1:4000'))
 
     useEffect(() => {
@@ -32,15 +34,15 @@ export default function Home() {
         if ( data == 1){
             setDisplayPhoto(true);
             setDisplayGraph(false);
-            setDisplayMedia(false);
+            setDisplayVideo(false);
         } else if ( data == 2) {
             setDisplayPhoto(false);
             setDisplayGraph(true);
-            setDisplayMedia(false);
-        } else {
+            setDisplayVideo(false);
+        } else if ( data == 3) {
             setDisplayPhoto(false);
             setDisplayGraph(false);
-            setDisplayMedia(true);
+            setDisplayVideo(true);
         }
     })
 
@@ -55,6 +57,7 @@ export default function Home() {
               {displayPhoto &&  <DisplayPhoto  socket={socket} />}
               {displayGraph &&  <DisplayGraph  socket={socket} />}
               {displayMedia &&  <DisplayMedia  socket={socket} />}
+              {displayVideo &&  <DisplayVideo  socket={socket} />}
             </main>
             <Aside socket={socket} />
         </div>

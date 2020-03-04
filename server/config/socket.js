@@ -55,11 +55,14 @@ module.exports = function(socket){
         if ( monState < 2 ){
             connectedUsers["iamfront"].emit('choixAffichage', 2);
             monState = 3;
-        } else {
-            let voteslist = votes;
+        } else if ( monState == 3  ) {
+            let voteslist = [3, 5, 1, 5, 4];
             console.log("emetteur");
             connectedUsers["iamfront"].emit('votes', voteslist);
             console.log(voteslist);
+            monState = 4;
+        } else if ( monState == 4 ){
+            connectedUsers["iamfront"].emit('choixAffichage', 3);
         }
     });
 
