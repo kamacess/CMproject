@@ -22,7 +22,7 @@ ul li {
 }
 
 li:nth-child(2n+1) {
-    font-family: 'Source Code Pro' ;
+    font-family: "Source Code Pro" ;
 }
 
 li:nth-child(4n+1) {
