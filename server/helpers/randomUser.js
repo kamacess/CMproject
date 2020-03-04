@@ -39,12 +39,9 @@ function getColors() {
     return backgroundColor, awesomeColor
 };
 
-
-
 function getAvatar(){
     getRandomName(adjectives, animals)
     randomWord(pattern)
     getColors();
     return backgroundColor, awesomeColor, newPattern
-
 } 
