@@ -51,7 +51,7 @@ export default function DisplayGraph(props) {
                 {drawSquares(StyleTableau[3])}
             </div>
             <div className="col-sm-12 beaubourg">
-                {drawSquares(StyleTableau[3])}
+                {drawSquares(StyleTableau[4])}
             </div>
         </div>
 

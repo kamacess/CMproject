@@ -19,8 +19,6 @@ export default function HomeTel() {
 
     socket.emit("registerTel", idUnique );
 
-
-
     return (
         <div className="home-tel">
             <h1>BonGEOurrE</h1>
