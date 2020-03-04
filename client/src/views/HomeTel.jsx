@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import EcranActionTel from '../components/frontTelephone/EcranActionTel';
 import io from 'socket.io-client';
+import './../styles/tel.css';
 import EcranRange from "../components/frontTelephone/EcranRange";
 //const ioClient = io.connect('http://localhost:4000');
 const uuidv4 = require("uuid/v4");
