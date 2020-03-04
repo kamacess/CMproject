@@ -14,14 +14,15 @@ function randomWord(wordsArray) {
     return wordsArray[getRandomInt(wordsArray.length) - 1]
 }
 
-function getRandomName(arr1, arr2) {
-    let randomAdjective = randomWord(arr1);
-    let randomAnimal = randomWord(arr2);
+function getRandomName() {
+    let randomAdjective = randomWord(adjectives);
+    let randomAnimal = randomWord(animals);
     
     return randomAdjective +' '+ randomAnimal
 } 
 
-let newName = getRandomName(adjectives, animals);
+
+
 
 // avatar au hasard : une couleur au hasard + un font awesome au hasard dans sa couleur complémentaire
 
@@ -40,8 +41,11 @@ function getColors() {
 };
 
 function getAvatar(){
-    getRandomName(adjectives, animals)
-    randomWord(pattern)
-    getColors();
-    return backgroundColor, awesomeColor, newPattern
+    // getRandomName(adjectives, animals)
+    // randomWord(pattern)
+    // getColors();
+    // return backgroundColor, awesomeColor, newPattern
+    console.log("prout")
 } 
+
+module.exports = {getAvatar: getAvatar, getColors: getColors, getRandomName: getRandomName };

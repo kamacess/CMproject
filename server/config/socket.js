@@ -1,4 +1,5 @@
 //import mediaModel from '../models/Media';
+const {getAvatar, getRandomName, getColors} = require ('./../helpers/randomUser');
 const mediaModel = require('../models/Media');
 
 let connectedUsers = {};
@@ -7,6 +8,7 @@ let connectedUsers2 = [];
 
 module.exports = function(socket){
 
+   
     console.log("ici")
     let media = {
         type: 'video, text, image, audio, music, pdf'
@@ -30,9 +32,10 @@ module.exports = function(socket){
         {
             console.log("tv connected")
             socket.username = username;
+            const nom = getRandomName();
             connectedUsers[username] = socket;
             console.log(connectedUsers);
-            socket.emit('privateRegister', "titi"+username);
+            socket.emit('privateRegister', " you are now known as "+nom);
         }
     )
 

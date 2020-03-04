@@ -22,6 +22,11 @@ export default function HomeTel() {
 
     socket.emit("registerTel", idUnique );
 
+    // socket.on('private   Register', data => {
+    //     console.log(data)
+    // }
+    // )
+
 
 
     return (
