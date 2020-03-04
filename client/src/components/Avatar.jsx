@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(far, fas, fab);
 
 export default function Avatar() {
-	const  invColor= 'rgb(12,42,150)';
+	const invColor= 'rgb(12,42,150)';
 	const avColor  = 'rgb(243,213,105)';
 	const avatarIcon = 'allergies';
 

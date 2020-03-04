@@ -13,7 +13,7 @@ import HeaderMain from './components/HeaderMain'
 
 import io from 'socket.io-client';
 import './App.css';
-const ioClient = io.connect('http://localhost:4000');
+// const ioClient = io.connect('http://localhost:4000');
 
 export default function App() {
 

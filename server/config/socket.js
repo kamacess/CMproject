@@ -1,45 +1,68 @@
 //import mediaModel from '../models/Media';
+const {getAvatar, getRandomName, getColors} = require ('./../helpers/randomUser');
 const mediaModel = require('../models/Media');
 
-let connectedUsers = [];
+let connectedUsers = {};
 let connectedUsers2 = [];
-
 
 module.exports = function(socket){
 
     socket.on('send-message', function(message){
       socket.broadcast.emit('message', message)
-    //   socket.emit('message', message)
     });
 
     socket.on( "register", function(username)
         {
-            console.log("tv connected")
             socket.username = username;
             connectedUsers[username] = socket;
+            connectedUsers["iamfront"].emit('choixAffichage', 1);
+            const nom = getRandomName();
+            connectedUsers[username] = socket;
             console.log(connectedUsers);
+            socket.emit('privateRegister', " you are now known as "+nom);
         }
+
     )
 
     socket.on( "registerTel", function(username)
         
         {
+
             let media = socket.media;
             let resultFormDb;
                   mediaModel
-              .find().then(dbRes => {
+              .find()
+              .then(dbRes => {
                   const randomMedias = []
                   for(let i =0; i < 4; i++){
                       let randomIndex = Math.floor(Math.random()*dbRes.length)
                       let randomMedia = dbRes[randomIndex];
                         randomMedias.push(randomMedia);
                         dbRes.splice(randomIndex, 1);
-                  }
-            
-                socket.emit('send-media',randomMedias)
-              }).catch(err => {
+                    }
+                    socket.emit('send-media',randomMedias)
+              })
+              .catch(err => {
                   console.log(err)
               });
-    })
+    })   
+
+    let monState = 0;
+
+    socket.on('send-votes', function(votes){
+        console.log(connectedUsers.length,"this is connected users")
+        console.log("dans send votes")
+        if ( monState < 2 ){
+            connectedUsers["iamfront"].emit('choixAffichage', 2);
+            monState = 3;
+        } else {
+            let voteslist = votes;
+            console.log("emetteur");
+            connectedUsers["iamfront"].emit('votes', voteslist);
+            console.log(voteslist);
+        }
+    });
+
 
 };
+

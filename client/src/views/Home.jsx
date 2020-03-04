@@ -1,33 +1,62 @@
-import React from 'react';
+import React, {useState, useEffect} from "react";
 
 import io from 'socket.io-client';
-import Aside from './../components/frontLargeScreen/Aside'
-import DisplayGraph from './../components/frontLargeScreen/DisplayGraph'
+
 // import { Link } from 'react-router-dom';
 import './../styles/style.css';
 import DisplayPhoto from "../components/frontLargeScreen/DisplayPhoto";
+import DisplayGraph from './../components/frontLargeScreen/DisplayGraph';
+import Aside from './../components/frontLargeScreen/Aside';
+import DisplayMedia from './../components/frontLargeScreen/DisplayMedia';
+
+
 import './../styles/device.css';
-const ioClient = io.connect('http://localhost:4000');
+// const ioClient = io.connect('http://localhost:4000');
 export default function Home() {
+    const [displayPhoto, setDisplayPhoto] = useState(false);
+    const [displayGraph, setDisplayGraph] = useState(false);
+    const [displayMedia, setDisplayMedia] = useState(false);
+    const [socket, setSocket] = useState( io('http://127.0.0.1:4000'))
 
-	const socket = io('http://127.0.0.1:4000');
-
-	socket.emit("register", "iamfront" );
+    useEffect(() => {
+        socket.emit("register", "iamfront" );
+    }, [])
+    //attention on mpeut mettre les inititialtialisons ici par exemple DisplayGraph dans le deps
 
 	function sendMessage() {
 		socket.emit('send-message', 'salut les potos');
 	}
 
+    socket.on("choixAffichage", data => {
+        console.log("data",data);
+        if ( data == 1){
+            setDisplayPhoto(true);
+            setDisplayGraph(false);
+            setDisplayMedia(false);
+        } else if ( data == 2) {
+            setDisplayPhoto(false);
+            setDisplayGraph(true);
+            setDisplayMedia(false);
+        } else {
+            setDisplayPhoto(false);
+            setDisplayGraph(false);
+            setDisplayMedia(true);
+        }
+    })
+
+    socket.on("votes", data => {
+        console.log("voteee",  data );
+       setDisplayGraph(true);
+    })
+
     return (
         <div className="home">
             <main>
-                TON COMPOSANT REACT MAIN
-                <button onClick={sendMessage}>pr00t2THE M4XXXX</button>
-                <DisplayPhoto  socket={socket}/>
-                <DisplayGraph  socket={socket}/>
+              {displayPhoto &&  <DisplayPhoto  socket={socket} />}
+              {displayGraph &&  <DisplayGraph  socket={socket} />}
+              {displayMedia &&  <DisplayMedia  socket={socket} />}
             </main>
             <Aside socket={socket} />
-            
         </div>
     )
 }

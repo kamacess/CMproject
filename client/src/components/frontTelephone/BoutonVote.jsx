@@ -9,6 +9,7 @@ export default function BoutonVote(props) {
     }
 
     function handleSimulerVote(){
+
         props.socket.emit('send-votes', Date());
         console.log("send-votes")
     }
