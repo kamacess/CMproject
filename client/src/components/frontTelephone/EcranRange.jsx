@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ElementRange from './ElementRange';
 import './../../styles/range.css';
 
+
+// les choix (ensuite regroupés dans un tableau grâce au choices, setChoices)
 const montyPython = {
     name: 'Monty Python',
     value: 5
@@ -34,6 +36,8 @@ export default function EcranRange(props) {
 
 	const [ choices, setChoices ] = useState([ tokyo, montyPython, truffaut, bowie, beaubourg,  ]);
 
+
+    // fonction déclenchée qui permet d'envoyer un media par le socket.
 	function handleVoteMedia(e) {
         e.preventDefault();
 		props.socket.emit('send-media', choices);
@@ -55,7 +59,7 @@ export default function EcranRange(props) {
 	});
 
 
-
+    //composant qui map à travers le tableau de choix potentiels pour proposer à l'utilisateur un input range par choix. Les valeurs des inputs lui remontent grâce à la callback
 	return (
 		<div>
 			<button className="vote" onClick={handleVoteMedia}>
@@ -63,6 +67,9 @@ export default function EcranRange(props) {
 			</button>
 			--{cle}--
 			<form onSubmit={handleVoteMedia}>
+                <p>Nobody knows Chris Marker.
+                    But do you know these things?
+                </p>
 				{choices.map((choice, k) => {
                     {console.log(choice)}
                 return <ElementRange clbk={handleRangeInput} choice={choice} key={k}/>})	
