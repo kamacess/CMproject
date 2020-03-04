@@ -19,7 +19,7 @@ export default function BoutonVote(props) {
                 VOTER pour CE vote
             </button>
             <button className="vote" onClick= {handleSimulerVote}>
-                simuler les 4 votes
+                simuler les 5 votes pour franck poser les
             </button>
 
         </div>

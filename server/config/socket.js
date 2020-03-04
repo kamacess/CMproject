@@ -59,12 +59,13 @@ module.exports = function(socket){
 
     socket.on('send-votes', function(votes){
         let voteslist = [];
-        voteslist[0] = [33, 55, 16, 56, 48];
-        voteslist[1] = [43, 55, 17, 46, 68];
-        voteslist[2] = [63, 25, 72, 36, 79];
-        voteslist[3] = [83, 15, 82, 26, 13];
-        voteslist[4] = [93, 95, 92, 16, 22];
-        connectedUsers["iamfront"].emit('votes', votelist);
+        voteslist[0] = [3, 5, 1, 5, 4];
+        voteslist[1] = [4, 5, 1, 4, 3];
+        voteslist[2] = [5, 2, 2, 3, 2];
+        voteslist[3] = [5, 5, 2, 2, 4];
+        voteslist[4] = [3, 5, 2, 1, 2];
+        console.log(voteslist);
+        connectedUsers["iamfront"].emit('votes', voteslist);
     });
 
 

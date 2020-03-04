@@ -2,6 +2,7 @@ import React from 'react';
 
 import io from 'socket.io-client';
 import Aside from './../components/frontLargeScreen/Aside'
+import DisplayGraph from './../components/frontLargeScreen/DisplayGraph'
 // import { Link } from 'react-router-dom';
 import './../styles/style.css';
 import DisplayPhoto from "../components/frontLargeScreen/DisplayPhoto";
@@ -23,9 +24,9 @@ export default function Home() {
                 TON COMPOSANT REACT MAIN
                 <button onClick={sendMessage}>pr00t2THE M4XXXX</button>
                 <DisplayPhoto  socket={socket}/>
+                <DisplayGraph  socket={socket}/>
             </main>
-
-    <Aside socket={socket} />
+            <Aside socket={socket} />
             
         </div>
     )
