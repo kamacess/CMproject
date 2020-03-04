@@ -1,7 +1,7 @@
 //import mediaModel from '../models/Media';
 const mediaModel = require('../models/Media');
 
-let connectedUsers = [];
+let connectedUsers = {};
 let connectedUsers2 = [];
 
 
@@ -14,16 +14,16 @@ module.exports = function(socket){
 
     socket.on('send-message', function(message){
       socket.broadcast.emit('message', message)
-    //   socket.emit('message', message)
     });
 
     socket.on( "register", function(username)
         {
-            console.log("tv connected")
+
             socket.username = username;
             connectedUsers[username] = socket;
-            console.log(connectedUsers);
+            connectedUsers["iamfront"].emit('choixAffichage', 1);
         }
+
     )
 
     socket.on( "registerTel", function(username)
@@ -57,15 +57,20 @@ module.exports = function(socket){
         return resultFormDb;
     }
 
+    let monState = 0;
+
     socket.on('send-votes', function(votes){
-        let voteslist = [];
-        voteslist[0] = [3, 5, 1, 5, 4];
-        voteslist[1] = [4, 5, 1, 4, 3];
-        voteslist[2] = [5, 2, 2, 3, 2];
-        voteslist[3] = [5, 5, 2, 2, 4];
-        voteslist[4] = [3, 5, 2, 1, 2];
-        console.log(voteslist);
-        connectedUsers["iamfront"].emit('votes', voteslist);
+        console.log(connectedUsers.length,"this is connected users")
+        console.log("dans send votes")
+        if ( monState < 2 ){
+            connectedUsers["iamfront"].emit('choixAffichage', 2);
+            monState = 3;
+        } else {
+            let voteslist = [3, 5, 1, 5, 4];
+            console.log("emetteur");
+            connectedUsers["iamfront"].emit('votes', voteslist);
+            console.log(voteslist);
+        }
     });
 
 

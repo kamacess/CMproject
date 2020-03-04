@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 let tata = 'media';
 
-export default function DisplayPhoto(props) {
+export default function DisplayMedia(props) {
 
     const [media, setMedia] = useState(tata);
 
@@ -13,7 +13,7 @@ export default function DisplayPhoto(props) {
 
     return (
         <div className="list-media" id="liste-media">
-            Image display 1 <img src={media} />
+            Second MEDIA <img src={media} />
         </div>
     );
 }
