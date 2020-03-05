@@ -23,7 +23,20 @@ module.exports = function(socket){
         }
 
     )
-    
+
+    socket.on( "registerAdmin", function(username)
+        {
+            socket.username = username;
+            connectedUsers["iamadminmedia"] = socket;
+            //connectedUsers["iamfront"].emit('choixAffichage', 1);
+            //const nom = getRandomName();
+            //connectedUsers[username] = socket;
+            //console.log(connectedUsers);
+            //socket.emit('privateRegister', {nom, couleur:"dodgerblue",pattern:"cookie"});
+        }
+
+    )
+
 
     socket.on( "registerTel", function(username)
     {
@@ -38,12 +51,8 @@ module.exports = function(socket){
     }
     )
 
-
-
-
     socket.on( "registerTel", function(username)
-        
-        {
+    {
 
             let media = socket.media;
             let resultFormDb;
@@ -68,9 +77,7 @@ module.exports = function(socket){
 
     // émission du vote quand on demande un vote sur un média
     socket.on( "callForVoteMedia", function(username)
-        
     {
-
         let media = socket.media;
         let resultFormDb;
               mediaModel
@@ -88,36 +95,42 @@ module.exports = function(socket){
           .catch(err => {
               console.log(err)
           });
-
-        
-})  
-
+    })
 
     let monState = 0;
+
+    socket.on('FrontSequenceur', function(sequenceValue){
+        console.log("sequence", sequenceValue)
+        connectedUsers["iamfront"].emit('choixAffichage', sequenceValue);
+    });
+
+    socket.on('TelSequenceur', function(sequenceValue){
+        socket.broadcast.emit( 'sequence', sequenceValue);
+    });
+
 
     socket.on('send-votes', function(votes){
         console.log(connectedUsers.length,"this is connected users")
         console.log("dans send votes")
-        if ( monState < 2 ){
-            connectedUsers["iamfront"].emit('choixAffichage', 2);
-            monState = 3;
-        } else if ( monState == 3  ) {
-            let voteslist = [3, 5, 1, 5, 4];
+        console.log(votes)
+        //if ( monState < 2 ){
+        //    connectedUsers["iamfront"].emit('choixAffichage', 2);
+        //    monState = 3;
+        //} else if ( monState == 3  ) {
+        // let voteslist = [3, 5, 1, 5, 4];
             console.log("emetteur");
-            connectedUsers["iamfront"].emit('votes', voteslist);
-            console.log(voteslist);
+            connectedUsers["iamfront"].emit('votes', votes);
+
             monState = 4;
-        } else if ( monState == 4 ){
-            connectedUsers["iamfront"].emit('choixAffichage', 3);
-        }
+        //} else if ( monState == 4 ){
+        //    connectedUsers["iamfront"].emit('choixAffichage', 3);
+        //}
     });
 
     socket.on( "send-vote-media", function(media)
     {
         console.log('lemedia', media);
     }
-
-)
-
+    )
 };
 

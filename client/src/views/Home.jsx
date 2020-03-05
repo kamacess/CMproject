@@ -30,7 +30,7 @@ export default function Home() {
 	}
 
     socket.on("choixAffichage", data => {
-        console.log("data",data);
+        console.log("DDDDDDDdata",data);
         if ( data == 1){
             setDisplayPhoto(true);
             setDisplayGraph(false);
@@ -43,7 +43,12 @@ export default function Home() {
             setDisplayPhoto(false);
             setDisplayGraph(false);
             setDisplayVideo(true);
+        } else if ( data == 4) {
+            setDisplayPhoto(true);
+            setDisplayGraph(false);
+            setDisplayVideo(true);
         }
+
     })
 
     socket.on("votes", data => {
