@@ -14,7 +14,6 @@ const uuidv4 = require("uuid/v4");
 
 export default function HomeTel() {
    
-
     //states pour l'affichage des composants
     const [displayAvatar, setDisplayAvatar] = useState(false);
     const [displayEcranRange, setDisplayEcranRange] = useState(false);
@@ -47,21 +46,18 @@ export default function HomeTel() {
                 setDisplayEcranRange(false);
                 setDisplayEcranActionTel(false);
             }
-
         })
-
 
     // socket.on('privateRegister', avatar => {
     //     console.log("j'ai bien reçu mon avatar", avatar)
  
     // })
 
-   
     return (
         <div className="home-tel">
             <h1>BonGEOurrE</h1>
-              {displayAvatar &&  <Avatar  socket={socket} />}
-              {displayEcranRange &&  <EcranRange  socket={socket} />}
+              {displayAvatar &&  <Avatar socket={socket} />}
+              {displayEcranRange &&  <EcranRange socket={socket} />}
               {displayEcranActionTel &&  <EcranActionTel  socket={socket} />}
             <Chat />
         </div>
