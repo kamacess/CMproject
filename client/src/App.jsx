@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Home, AdminTable, AdminForm, Media, NotFound
 import Home from './views/Home';
 import HomeTel from './views/HomeTel';
+import AdminDemoTel from './views/AdminDemoTel';
 import AdminTables from './views/AdminTables';
 import AdminForms from './views/AdminForms';
 import Medias from './views/Medias';
@@ -17,7 +18,6 @@ import './App.css';
 
 export default function App() {
 
-
 	return (
 		<React.Fragment>
 			<Switch>
@@ -26,6 +26,7 @@ export default function App() {
 				<Route path="/medias" component={Medias} />
 				<Route path= '/admin/:endpoint(medias|medias)/:mode' component={AdminForms}/>
 				<Route path= '/adminall/:endpoint(medias|medias)/' component={AdminTables}/>
+				<Route exact path="/admin/demo" component={AdminDemoTel} />
 				<Route path="*" component={NotFound} />
 			</Switch>
 				

@@ -36,8 +36,7 @@ module.exports = function(socket){
 
         socket.emit('choixAffichageTel', data);
     }
-
-)
+    )
 
 
 
@@ -67,7 +66,7 @@ module.exports = function(socket){
             
     })   
 
-// émission du vote quand on demande un vote sur un média
+    // émission du vote quand on demande un vote sur un média
     socket.on( "callForVoteMedia", function(username)
         
     {
