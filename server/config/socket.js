@@ -19,7 +19,7 @@ module.exports = function(socket){
             const nom = getRandomName();
             connectedUsers[username] = socket;
             console.log(connectedUsers);
-            socket.emit('privateRegister', " you are now known as "+nom);
+            socket.emit('privateRegister', {nom, couleur:"dodgerblue",pattern:"cookie"});
         }
 
     )

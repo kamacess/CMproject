@@ -4,9 +4,9 @@ import Avatar from './../Avatar';
 
 
 
-export default function AsideLine(props) {
+export default function AsideLine({socket}) {
 
-
+console.log("console log du socket problématique", socket)
 
     return (
     //     <li> 
@@ -17,7 +17,7 @@ export default function AsideLine(props) {
 
 <li> 
 
-<Avatar />
+<Avatar socket = {socket} />
 
 <p><span className="aside-span" >Machintruc</span> has prouted</p>
 </li>
