@@ -23,6 +23,24 @@ module.exports = function(socket){
         }
 
     )
+    
+
+    socket.on( "registerTel", function(username)
+    {
+        socket.username = username;
+        const nom = getRandomName();
+        connectedUsers[username] = socket;
+        let data = [] ;
+        data.push("you are now known as "+ nom ) ;
+        data.push(2) ; 
+
+        socket.emit('choixAffichageTel', data);
+    }
+
+)
+
+
+
 
     socket.on( "registerTel", function(username)
         
@@ -45,7 +63,36 @@ module.exports = function(socket){
               .catch(err => {
                   console.log(err)
               });
+
+            
     })   
+
+// émission du vote quand on demande un vote sur un média
+    socket.on( "callForVoteMedia", function(username)
+        
+    {
+
+        let media = socket.media;
+        let resultFormDb;
+              mediaModel
+          .find()
+          .then(dbRes => {
+              const randomMedias = []
+              for(let i =0; i < 4; i++){
+                  let randomIndex = Math.floor(Math.random()*dbRes.length)
+                  let randomMedia = dbRes[randomIndex];
+                    randomMedias.push(randomMedia);
+                    dbRes.splice(randomIndex, 1);
+                }
+                socket.emit('send-media',randomMedias)
+          })
+          .catch(err => {
+              console.log(err)
+          });
+
+        
+})  
+
 
     let monState = 0;
 
