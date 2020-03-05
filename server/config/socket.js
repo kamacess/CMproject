@@ -66,6 +66,12 @@ module.exports = function(socket){
         }
     });
 
+    socket.on( "send-vote-media", function(media)
+    {
+        console.log('lemedia', media);
+    }
+
+)
 
 };
 

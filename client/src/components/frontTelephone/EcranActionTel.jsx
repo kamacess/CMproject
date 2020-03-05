@@ -51,7 +51,7 @@ export default function EcranActionTel(props) {
       mon web socket tel
       {medias ? medias.map(media => {
       return <>
-        <div className ="media" id="media">
+        <div className ="mediaBB" id="media" onClick={handleVoteMedia(media)}>
           {media.type === "image" 
           ? 
           <img src={media.media_url}></img>
@@ -63,20 +63,17 @@ export default function EcranActionTel(props) {
           <p>{media.media_text}</p>
         }
         </div>
-        <BoutonVote socket = {props.socket} />
         </>
       }) : ""
-}
-      </div>
+    }
+    </div>
   )
+
+  function handleVoteMedia(media){
+
+    props.socket.emit('send-vote-media',media );
+    console.log("j'ai compris qu'il fallait handleVote Media", media)
   }
 
 
-
- // function handleVoteNewMedia(){
-  //   props.socket.on('send-media', function (newMedia) {
-  //   console.log(newMedia);
-  //   props.socket.emit('send-vote', Date());
-  //   console.log("j'ai compris qu'il fallait handleVote Media")
-  //   }
-  // }
+}
